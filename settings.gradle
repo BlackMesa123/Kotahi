@@ -1,2 +1,3 @@
 rootProject.name = "Kotahi"
 include ':app'
+include ':utils:presetimage'
