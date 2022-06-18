@@ -64,5 +64,6 @@ dependencies {
         exclude group: 'androidx.recyclerview', module: 'recyclerview'
     }
 
+    implementation project(path: ':utils:animation')
     implementation project(path: ':utils:presetimage')
 }

@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.samsung.android.view.animation'
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.2.2"
+    }
+}
