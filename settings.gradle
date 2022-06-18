@@ -2,3 +2,4 @@ rootProject.name = "Kotahi"
 include ':app'
 include ':utils:animation'
 include ':utils:presetimage'
+include ':utils:stub'
