@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.mesalabs.oneui.support.widget.SpinnerItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/text1"
+    style="?attr/spinnerDropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/dropdownListPreferredItemHeight"
+    android:singleLine="true"
+    android:ellipsize="marquee"
+    android:checked="true"
+    tools:viewBindingIgnore="true" />

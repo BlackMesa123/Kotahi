@@ -1,0 +1,29 @@
+plugins {
+    id 'com.android.library'
+    id 'dev.rikka.tools.refine'
+}
+
+android {
+    namespace 'io.mesalabs.oneui'
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 32
+    }
+
+    buildFeatures {
+        buildConfig false
+    }
+}
+
+configurations.all {
+    exclude group: 'androidx.appcompat', module: 'appcompat'
+    exclude group: 'androidx.core', module: 'core'
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'io.github.oneuiproject.sesl:appcompat:1.2.1'
+    compileOnly project(path: ':utils:stub')
+}

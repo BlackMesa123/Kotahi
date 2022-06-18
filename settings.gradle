@@ -1,5 +1,6 @@
 rootProject.name = "Kotahi"
 include ':app'
 include ':utils:animation'
+include ':utils:oneui'
 include ':utils:presetimage'
 include ':utils:stub'
