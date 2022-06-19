@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+    <color name="samsung_bg_color">@color/sesl_round_and_bgcolor_dark</color>
+    <color name="samsung_fg_color">@color/sesl_background_color_dark</color>
+    <color name="samsung_text_primary_color">@color/sesl_primary_text_dark</color>
+    <color name="samsung_text_secondary_color">@color/sesl_secondary_text_dark</color>
+    <color name="samsung_ripple_color">#29ffffff</color>
+
+</resources>

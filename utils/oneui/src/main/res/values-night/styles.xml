@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Toolbar -->
+    <style name="TextAppearance.Kotahi.SeslToolbar.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>
