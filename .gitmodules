@@ -1,0 +1,9 @@
+[submodule "tdlib/jni/td"]
+	path = tdlib/jni/td
+	url = https://github.com/tdlib/td.git
+	ignore = dirty
+[submodule "tdlib/jni/openssl"]
+	path = tdlib/jni/openssl
+	url = https://github.com/openssl/openssl.git
+	branch = OpenSSL_1_1_1-stable
+	ignore = dirty

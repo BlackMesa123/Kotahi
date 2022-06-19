@@ -1,0 +1,6 @@
+-keep class org.drinkless.tdlib.Client
+-keepclassmembers class org.drinkless.tdlib.Client { *; }
+-keep class org.drinkless.tdlib.Log
+-keepclassmembers class org.drinkless.tdlib.Log { *; }
+-keep class org.drinkless.tdlib.TdApi { *; }
+-keep class org.drinkless.tdlib.TdApi$* { *; }
