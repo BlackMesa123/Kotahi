@@ -35,19 +35,19 @@ function build {
 		case "${arg}" in
 			x86_64)
 				ARCH=x86_64
-				./Configure android-x86_64 no-shared -D__ANDROID_API__=23
+				./Configure android-x86_64 no-shared -D__ANDROID_API__=24
 			;;
 			arm64)
 				ARCH=arm64
-				./Configure android-arm64 no-shared -D__ANDROID_API__=23
+				./Configure android-arm64 no-shared -D__ANDROID_API__=24
 			;;
 			arm)
 				ARCH=arm
-				./Configure android-arm no-shared -D__ANDROID_API__=23 -D__ARM_MAX_ARCH__=8
+				./Configure android-arm no-shared -D__ANDROID_API__=24 -D__ARM_MAX_ARCH__=8
 			;;
 			x86)
 				ARCH=x86
-				./Configure android-x86 no-shared -D__ANDROID_API__=23
+				./Configure android-x86 no-shared -D__ANDROID_API__=24
 			;;
 			*)
 				echo -e "\033[31mFailed! ARCH not valid: ${arg}\033[0m"
