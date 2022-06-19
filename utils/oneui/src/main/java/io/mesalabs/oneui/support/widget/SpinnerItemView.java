@@ -8,11 +8,10 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SeslCheckedTextView;
-import androidx.core.content.res.ResourcesCompat;
+import androidx.core.content.ContextCompat;
 
 import io.mesalabs.oneui.R;
 import io.mesalabs.oneui.support.utils.TypefaceUtils;
-import io.mesalabs.oneui.support.utils.BuildUtils;
 
 public class SpinnerItemView extends SeslCheckedTextView {
 
@@ -34,23 +33,18 @@ public class SpinnerItemView extends SeslCheckedTextView {
         super.setChecked(checked);
 
         if (checked) {
-            setTypeface(BuildUtils.isSemDevice()
-                    ? TypefaceUtils.SEC_ROBOTO_BOLD
-                    : TypefaceUtils.ROBOTO_MEDIUM);
+            setTypeface(TypefaceUtils.getBoldSupportTypeface());
 
             Context context = getContext();
             if (context != null && getCurrentTextColor() == Color.MAGENTA) {
-                ColorStateList textColor = ResourcesCompat.getColorStateList(context.getResources(),
-                        R.color.oneui_spinner_dropdown_text_color,
-                        context.getTheme());
+                ColorStateList textColor = ContextCompat.getColorStateList(context,
+                        R.color.oneui_spinner_dropdown_text_color);
                 if (textColor != null) {
                     setTextColor(textColor);
                 }
             }
         } else {
-            setTypeface(BuildUtils.isSemDevice()
-                    ? TypefaceUtils.SEC_ROBOTO_REGULAR
-                    : TypefaceUtils.ROBOTO_REGULAR);
+            setTypeface(TypefaceUtils.getNormalSupportTypeface());
         }
     }
 
