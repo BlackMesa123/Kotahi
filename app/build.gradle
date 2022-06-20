@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'dev.rikka.tools.refine'
 }
 
 def versionMajor = 0
@@ -74,13 +75,22 @@ dependencies {
     // AndroidX
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.browser:browser:1.4.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation("androidx.navigation:navigation-ui:2.3.5") {
+        exclude group: 'androidx.drawerlayout', module: 'drawerlayout'
+        exclude group: 'com.google.android.material', module: 'material'
+    }
     implementation("androidx.viewpager2:viewpager2:1.0.0") {
         exclude group: 'androidx.recyclerview', module: 'recyclerview'
     }
     // TDLib
     implementation project(path: ':tdlib')
+    // Rikka
+    implementation 'dev.rikka.tools.refine:runtime:3.1.1'
 
     implementation project(path: ':utils:animation')
     implementation project(path: ':utils:oneui')
     implementation project(path: ':utils:presetimage')
+    compileOnly project(path: ':utils:stub')
 }

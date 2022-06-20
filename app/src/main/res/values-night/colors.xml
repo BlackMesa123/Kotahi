@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- OOBE -->
+    <color name="oobe_intro_tos_text_color">#ffb0b0b0</color>
+
+</resources>

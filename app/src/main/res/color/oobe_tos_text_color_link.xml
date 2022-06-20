@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_enabled="false"
+        android:alpha="0.6"
+        android:color="@color/oobe_intro_tos_text_color" />
+    <item
+        android:color="@color/oobe_intro_tos_text_color" />
+</selector>

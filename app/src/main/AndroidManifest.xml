@@ -3,6 +3,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="false"
         android:hardwareAccelerated="true"
@@ -39,7 +45,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+            <!-- Disable Samsung PopOver -->
+            <meta-data
+                android:name="com.samsung.android.supports_pop_over"
+                android:value="false" />
+
+            <!-- Samsung Icon Color Theme -->
+            <meta-data
+                android:name="com.sec.android.app.launcher.icon_theme"
+                android:value="themeColor" />
+
         </activity>
+
+        <activity
+            android:name=".activity.oobe.OOBEActivity"
+            android:theme="@style/Theme.Kotahi.OOBEActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+
     </application>
 
 </manifest>
