@@ -6,7 +6,7 @@ cd tdlib/jni
 
 if ! [ -d "td" ] || ! [ "$(ls -A td)" ]; then
 	echo -e "\033[31mFailed! Submodule 'td' not found!\033[0m"
-	echo -e "\033[31mTry to run: 'git submodule update --init --recursive'\033[0m"
+	echo -e "\033[31mRun this script from the repo root folder or run: 'git submodule update --init --recursive'\033[0m"
 	exit
 fi
 

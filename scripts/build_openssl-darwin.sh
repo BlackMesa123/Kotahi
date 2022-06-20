@@ -6,7 +6,7 @@ cd tdlib/jni
 
 if ! [ -d "openssl" ] || ! [ "$(ls -A openssl)" ]; then
 	echo -e "\033[31mFailed! Submodule 'openssl' not found!\033[0m"
-	echo -e "\033[31mTry to run: 'git submodule update --init --recursive'\033[0m"
+	echo -e "\033[31mRun this script from the repo root folder or run: 'git submodule update --init --recursive'\033[0m"
 	exit
 fi
 
@@ -18,7 +18,7 @@ fi
 export ANDROID_NDK=$NDK
 HOST_ARCH=$(printf `ls $NDK/toolchains/llvm/prebuilt`)
 export PATH=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin:$PATH
-JOBS=`grep processor /proc/cpuinfo|wc -l`
+JOBS=`sysctl -n hw.ncpu`
 
 cd openssl
 
@@ -55,7 +55,7 @@ function build {
 			;;
 		esac
 
-		sed -i 's/-O3/-O3 -ffunction-sections -fdata-sections/g' Makefile
+		sed -i "" 's/-O3/-O3 -ffunction-sections -fdata-sections/g' Makefile
 		make depend -s
 		make -j$JOBS -s
 		

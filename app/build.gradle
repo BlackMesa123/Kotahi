@@ -10,6 +10,7 @@ def versionPatch = 1
 android {
     namespace 'io.mesalabs.kotahi'
     compileSdk 32
+    ndkVersion "24.0.8215888"
 
     defaultConfig {
         applicationId "io.mesalabs.kotahi"
