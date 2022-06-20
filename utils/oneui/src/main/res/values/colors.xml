@@ -9,5 +9,8 @@
     <color name="samsung_text_primary_color">@color/sesl_primary_text_light</color>
     <color name="samsung_text_secondary_color">@color/sesl_secondary_text_light</color>
     <color name="samsung_ripple_color">#1a000000</color>
+    <color name="samsung_functional_green_color">@color/sesl_functional_green_light</color>
+    <color name="samsung_functional_orange_color">@color/sesl_functional_orange_light</color>
+    <color name="samsung_functional_red_color">@color/sesl_functional_red_light</color>
 
 </resources>
