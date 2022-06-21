@@ -3,5 +3,7 @@
 
     <!-- OOBE -->
     <color name="oobe_intro_tos_text_color">#ffb0b0b0</color>
+    <color name="oobe_country_spinner_text_color">@color/samsung_white</color>
+    <color name="oobe_country_spinner_arrow_color">#ffd9d9d9</color>
 
 </resources>

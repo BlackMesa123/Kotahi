@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Widget.Kotahi.OOBE.TextView.Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Please insert your phone number." />
+
+        <io.mesalabs.oneui.support.widget.RoundedLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/samsung_fg_color"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp">
+
+            <io.mesalabs.kotahi.ui.oobe.widget.CountrySpinnerView
+                android:id="@+id/oobe_config_country_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/samsung_text_primary_color" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/countrycodeedit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="20sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittestss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:inputType="phone"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </io.mesalabs.oneui.support.widget.RoundedLinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/oobe_intro_sub_footer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16.0dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/oobe_intro_sub_button"
+            style="@style/Widget.Kotahi.OOBE.SubButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10.0dp"
+            android:layout_gravity="end" />
+
+    </FrameLayout>
+
+</LinearLayout>

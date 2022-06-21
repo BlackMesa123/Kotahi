@@ -39,4 +39,15 @@
         <item name="android:textColor">#fffafafa</item>
     </style>
 
+    <style name="Widget.Kotahi.OOBE.SubButton" parent="Widget.AppCompat.Button">
+        <item name="android:paddingStart">16.0dp</item>
+        <item name="android:paddingTop">10.0dp</item>
+        <item name="android:paddingEnd">16.0dp</item>
+        <item name="android:paddingBottom">10.0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/oobe_sub_button_background</item>
+        <item name="android:textSize">20.0sp</item>
+        <item name="android:textColor">@color/samsung_text_primary_color</item>
+    </style>
+
 </resources>

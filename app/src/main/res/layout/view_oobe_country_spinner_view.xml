@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:viewBindingIgnore="true">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/country_spinner_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18.0dp"
+        android:layout_marginEnd="29.0dp"
+        android:paddingVertical="4.0dp"
+        android:layout_gravity="center_vertical"
+        android:textSize="17.0sp"
+        android:textColor="@color/oobe_country_spinner_text_color"
+        android:maxLines="3"
+        android:ellipsize="end" />
+
+</merge>

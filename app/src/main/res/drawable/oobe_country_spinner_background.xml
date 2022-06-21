@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingEnd="29.0dp"
+    android:paddingMode="stack">
+
+    <item>
+        <ripple android:color="?attr/colorControlHighlight">
+            <item
+                android:id="@android:id/mask"
+                android:drawable="@drawable/sesl_spinner_background_mask" />
+        </ripple>
+    </item>
+
+    <item
+        android:drawable="@drawable/oobe_country_spinner_arrow"
+        android:width="22.0dp"
+        android:end="12.0dp"
+        android:gravity="end|center" />
+
+</layer-list>
