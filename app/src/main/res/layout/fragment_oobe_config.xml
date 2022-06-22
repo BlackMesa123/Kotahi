@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/samsung_fg_color"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="12dp">
+            android:paddingHorizontal="24.0dp"
+            android:paddingVertical="12.0dp">
 
             <io.mesalabs.kotahi.ui.oobe.widget.CountrySpinnerView
                 android:id="@+id/oobe_config_country_spinner"
@@ -35,9 +35,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingHorizontal="16dp"
-                android:paddingBottom="8dp"
+                android:paddingTop="16.0dp"
+                android:paddingHorizontal="16.0dp"
+                android:paddingBottom="8.0dp"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal">
 
@@ -45,18 +45,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+"
-                    android:textSize="20sp"
+                    android:textSize="20.0sp"
                     android:textColor="@color/samsung_text_primary_color" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/countrycodeedit"
+                    android:id="@+id/oobe_config_country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textSize="20sp"/>
+                    android:textSize="20.0sp"
+                    android:maxLength="4"
+                    android:inputType="number" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edittestss"
+                    android:id="@+id/oobe_config_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"

@@ -7,6 +7,9 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
         <item name="android:listChoiceBackgroundIndicator">?attr/listChoiceBackgroundIndicator</item>
+        <item name="appBarLayoutStyle">@style/Widget.Design.AppBarLayout</item>
+        <item name="collapsingToolbarLayoutStyle">@style/Widget.Design.CollapsingToolbar</item>
+        <item name="tabStyle">@style/Widget.Design.TabLayout</item>
     </style>
 
 </resources>

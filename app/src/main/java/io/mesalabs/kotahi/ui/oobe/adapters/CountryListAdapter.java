@@ -48,6 +48,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
     public class Country {
         public String name;
         public String code;
+        public String iso;
         public String phoneNumberFormat;
 
         Country() {
@@ -59,6 +60,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         public String toString() {
             return "name=" + name
                     + "; code=" + code
+                    + "; iso=" + iso
                     + "; phoneNumberFormat=" + phoneNumberFormat;
         }
     }
@@ -84,6 +86,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
                 Country c = new Country();
                 c.name = args[2];
                 c.code = args[0];
+                c.iso = args[1];
                 if (args.length > 3) {
                     c.phoneNumberFormat = args[3];
                 }

@@ -2,6 +2,7 @@ package io.mesalabs.kotahi.ui.oobe.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -73,17 +74,17 @@ public class OOBEConfigFragment extends Fragment {
     private void init() {
         mBinding.oobeConfigCountrySpinner.setOnItemSelectedListener(
                 (countryCode, phoneNumberFormat) -> {
-                    boolean hasFocus = mBinding.countrycodeedit.hasFocus();
+                    boolean hasFocus = mBinding.oobeConfigCountryCode.hasFocus();
                     if (hasFocus) {
-                        mBinding.countrycodeedit.clearFocus();
+                        mBinding.oobeConfigCountryCode.clearFocus();
                     }
-                    mBinding.countrycodeedit.setText(countryCode);
+                    mBinding.oobeConfigCountryCode.setText(countryCode);
                     if (hasFocus) {
-                        mBinding.countrycodeedit.requestFocus();
+                        mBinding.oobeConfigCountryCode.requestFocus();
                     }
                 });
 
-        mBinding.countrycodeedit.addTextChangedListener(new TextWatcher() {
+        mBinding.oobeConfigCountryCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(
                     CharSequence s, int start, int count, int after) { }
@@ -91,7 +92,7 @@ public class OOBEConfigFragment extends Fragment {
             @Override
             public void onTextChanged(
                     CharSequence s, int start, int before, int count) {
-                if (mBinding.countrycodeedit.hasFocus()) {
+                if (mBinding.oobeConfigCountryCode.hasFocus()) {
                     mBinding.oobeConfigCountrySpinner.setCountryFromCode(s.toString());
                 }
             }
@@ -99,6 +100,9 @@ public class OOBEConfigFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) { }
         });
+
+        TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+        mBinding.oobeConfigCountrySpinner.setCountryFromISO(tm.getSimCountryIso());
 
         // TODO add localized string
         mBinding.oobeIntroSubButton.setText("Next");

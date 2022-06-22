@@ -11,13 +11,13 @@
         android:id="@+id/country_dialog_search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8.0dp"
         app:queryBackground="@drawable/oneui_search_view_round_background"
         app:iconifiedByDefault="false" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/country_dialog_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none" />
+        android:layout_height="wrap_content" />
 
 </io.mesalabs.kotahi.ui.widget.MaxHeightLinearLayout>

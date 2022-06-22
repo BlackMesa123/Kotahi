@@ -73,6 +73,9 @@ public class CountrySpinnerView extends LinearLayout
         inflate(mContext, R.layout.view_oobe_country_spinner_view, this);
 
         mTextView = findViewById(R.id.country_spinner_item_text);
+        // TODO add localized string
+        mTextView.setText("Country");
+        mTextView.setEnabled(false);
 
         final int verticalPadding = (int) TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, VIEW_VERTICAL_PADDING,
@@ -88,6 +91,7 @@ public class CountrySpinnerView extends LinearLayout
         LayoutInflater inflater = LayoutInflater.from(mContext);
         MaxHeightLinearLayout view = (MaxHeightLinearLayout) inflater
                 .inflate(R.layout.view_oobe_country_spinner_dialog, null);
+
         view.setMaxHeight((int) (mContext.getResources().getDisplayMetrics().widthPixels * 1.25f));
         mCountrySearchView = view.findViewById(R.id.country_dialog_search_view);
         mCountryListView = view.findViewById(R.id.country_dialog_list_view);
@@ -185,6 +189,21 @@ public class CountrySpinnerView extends LinearLayout
         mListAdapter.setCheckedItem(-1);
     }
 
+    public void setCountryFromISO(String countryIso) {
+        ArrayList<CountryListAdapter.Country> countries
+                = mListAdapter.getCountries();
+
+        for (CountryListAdapter.Country c : countries) {
+            if (c.iso.toLowerCase().equals(countryIso)) {
+                int index = countries.indexOf(c);
+                mListAdapter.setCheckedItem(index);
+                return;
+            }
+        }
+
+        mListAdapter.setCheckedItem(-1);
+    }
+
     @Override
     public void onItemSelected(CountryListAdapter.Country country, int selectedPosition) {
         mSelectedPos = selectedPosition;
@@ -195,12 +214,15 @@ public class CountrySpinnerView extends LinearLayout
 
         if (mSelectedPos != -1) {
             mTextView.setText(mListAdapter.getCountryName(country));
+            mTextView.setEnabled(true);
             if (mListener != null) {
                 mListener.onItemSelected(country.code, country.phoneNumberFormat);
             }
         } else {
             mSelectedPos = 0;
-            mTextView.setText("");
+            // TODO add localized string
+            mTextView.setText("Country");
+            mTextView.setEnabled(false);
         }
     }
 }

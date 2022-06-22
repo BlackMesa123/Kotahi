@@ -4,7 +4,8 @@
     <!-- OOBE -->
     <color name="oobe_intro_tips_warning_text_color">@color/samsung_functional_red_color</color>
     <color name="oobe_intro_tos_text_color">#ff505050</color>
-    <color name="oobe_country_spinner_text_color">@color/samsung_black</color>
+    <color name="oobe_country_spinner_text_enabled_color">@color/samsung_black</color>
+    <color name="oobe_country_spinner_text_disabled_color">@color/samsung_text_secondary_color</color>
     <color name="oobe_country_spinner_arrow_color">#ff3b3b3b</color>
 
 </resources>
