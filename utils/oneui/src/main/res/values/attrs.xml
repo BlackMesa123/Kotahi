@@ -11,6 +11,10 @@
     </attr>
 
     <!-- Custom Views -->
+    <declare-styleable name="RoundedCoordinatorLayout">
+        <attr name="roundedCorners" />
+    </declare-styleable>
+
     <declare-styleable name="RoundedFrameLayout">
         <attr name="roundedCorners" />
     </declare-styleable>
