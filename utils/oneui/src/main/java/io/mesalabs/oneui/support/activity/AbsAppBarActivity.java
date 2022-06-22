@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
@@ -65,6 +66,8 @@ abstract class AbsAppBarActivity extends BaseActivity {
     public abstract Toolbar getToolbar();
     @NonNull
     public abstract ViewGroup getContentContainer();
+    @NonNull
+    public abstract ViewGroup getFooterContainer();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -117,7 +120,7 @@ abstract class AbsAppBarActivity extends BaseActivity {
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
-        LayoutInflater inflater = LayoutInflater.from(this);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         setContentView(inflater.inflate(
                 layoutResID, getContentContainer(), false));
     }
@@ -266,7 +269,20 @@ abstract class AbsAppBarActivity extends BaseActivity {
     }
 
     /*
-    * Misc
+     * Footer methods.
+     */
+    public void addFooterView(@NonNull View view) {
+        getFooterContainer().addView(view, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+    }
+
+    public void addFooterView(@NonNull View view,
+                               @NonNull ViewGroup.LayoutParams params) {
+        getFooterContainer().addView(view, params);
+    }
+
+    /*
+     * Misc
      */
     private void setContentSideMargin(@NonNull Configuration config, @NonNull ViewGroup layout) {
         if (!isDestroyed() && !isFinishing()) {

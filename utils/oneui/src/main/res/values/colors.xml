@@ -13,4 +13,7 @@
     <color name="samsung_functional_orange_color">@color/sesl_functional_orange_light</color>
     <color name="samsung_functional_red_color">@color/sesl_functional_red_light</color>
 
+    <!-- DrawerActivity -->
+    <color name="oui_drawerlayout_drawer_dim_color">#33000000</color>
+
 </resources>

@@ -48,6 +48,7 @@ public class AppBarActivity extends AbsAppBarActivity {
         rootView.addView(mAppBarContent.getRoot(), appBarLp);
 
         mFooterContainer = new LinearLayout(this);
+        mFooterContainer.setOrientation(LinearLayout.VERTICAL);
         mFooterContainer.setBackgroundResource(R.color.samsung_bg_color);
         LinearLayout.LayoutParams footerLp = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -80,5 +81,11 @@ public class AppBarActivity extends AbsAppBarActivity {
     @Override
     public ViewGroup getContentContainer() {
         return mAppBarContent.contentContainer;
+    }
+
+    @NonNull
+    @Override
+    public ViewGroup getFooterContainer() {
+        return mFooterContainer;
     }
 }
