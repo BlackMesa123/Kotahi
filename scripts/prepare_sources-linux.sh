@@ -11,7 +11,7 @@ if ! [ -d "td" ] || ! [ "$(ls -A td)" ]; then
 fi
 
 OPENSSL_VERSION=$(openssl version | awk '{print $2}')
-if ! [[ $OPENSSL_VERSION == "1.1.1"* ]] ; then
+if ! [[ $OPENSSL_VERSION == "1.1.1"* ]]; then
 	echo -e "\033[31mFailed! openssl is either not installed or not version 1.1.1\033[0m"
 	exit
 fi
