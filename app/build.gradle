@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    //id 'kotlin-android'
     id 'dev.rikka.tools.refine'
 }
 
@@ -73,7 +73,7 @@ dependencies {
         exclude group: 'io.github.oneuiproject.sesl', module: 'viewpager2'
     }
     // AndroidX
-    implementation 'androidx.core:core-ktx:1.5.0'
+    //implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.browser:browser:1.4.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
@@ -93,4 +93,6 @@ dependencies {
     implementation project(path: ':utils:oneui')
     implementation project(path: ':utils:presetimage')
     compileOnly project(path: ':utils:stub')
+
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
 }

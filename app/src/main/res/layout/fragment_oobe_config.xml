@@ -15,15 +15,15 @@
             style="@style/Widget.Kotahi.OOBE.TextView.Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Please insert your phone number."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Please insert your phone number." />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <io.mesalabs.oneui.support.widget.RoundedLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@color/samsung_fg_color"
+            android:orientation="vertical"
             android:paddingHorizontal="24.0dp"
             android:paddingVertical="12.0dp">
 
@@ -35,26 +35,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16.0dp"
-                android:paddingHorizontal="16.0dp"
-                android:paddingBottom="8.0dp"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:gravity="center_horizontal">
+                android:paddingHorizontal="16.0dp"
+                android:paddingTop="16.0dp"
+                android:paddingBottom="8.0dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+"
-                    android:textSize="20.0sp"
-                    android:textColor="@color/samsung_text_primary_color" />
+                    android:textColor="@color/samsung_text_primary_color"
+                    android:textSize="20.0sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/oobe_config_country_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20.0sp"
+                    android:inputType="number"
                     android:maxLength="4"
-                    android:inputType="number" />
+                    android:textSize="20.0sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/oobe_config_phone_number"
@@ -62,11 +62,38 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:inputType="phone"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
         </io.mesalabs.oneui.support.widget.RoundedLinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continue with" />
+
+        <io.mesalabs.oneui.support.widget.RoundedLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/samsung_fg_color"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/oobe_config_number_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </io.mesalabs.oneui.support.widget.RoundedLinearLayout>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
+            android:checked="true"
+            android:text="Sync Contacts" />
 
     </LinearLayout>
 
@@ -81,8 +108,8 @@
             style="@style/Widget.Kotahi.OOBE.SubButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10.0dp"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:layout_marginEnd="10.0dp" />
 
     </FrameLayout>
 
