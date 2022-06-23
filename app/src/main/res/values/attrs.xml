@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Custom Views -->
+    <declare-styleable name="FabImageButton">
+        <attr name="android:minWidth" />
+        <attr name="android:minHeight" />
+        <attr name="android:background" />
+        <attr name="android:src" />
+        <attr name="android:elevation" />
+        <attr name="tooltipText" />
+    </declare-styleable>
+
+</resources>

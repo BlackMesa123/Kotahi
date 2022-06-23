@@ -8,4 +8,7 @@
     <color name="oobe_country_spinner_text_disabled_color">@color/samsung_text_secondary_color</color>
     <color name="oobe_country_spinner_arrow_color">#ff3b3b3b</color>
 
+    <!-- FAB -->
+    <color name="widget_fab_bg_color">#fffcfcfc</color>
+
 </resources>

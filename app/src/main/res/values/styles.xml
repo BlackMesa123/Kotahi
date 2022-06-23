@@ -50,4 +50,12 @@
         <item name="android:textColor">@color/samsung_text_primary_color</item>
     </style>
 
+    <!-- FAB -->
+    <style name="Widget.Kotahi.ImageButton.FAB" parent="Widget.AppCompat.ImageButton">
+        <item name="android:minWidth">56.0dp</item>
+        <item name="android:minHeight">56.0dp</item>
+        <item name="android:background">@drawable/widget_fab_background</item>
+        <item name="android:elevation">4.0dp</item>
+    </style>
+
 </resources>

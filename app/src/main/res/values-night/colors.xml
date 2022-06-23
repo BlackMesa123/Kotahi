@@ -6,4 +6,7 @@
     <color name="oobe_country_spinner_text_enabled_color">@color/samsung_white</color>
     <color name="oobe_country_spinner_arrow_color">#ffd9d9d9</color>
 
+    <!-- FAB -->
+    <color name="widget_fab_bg_color">#ff252525</color>
+
 </resources>
