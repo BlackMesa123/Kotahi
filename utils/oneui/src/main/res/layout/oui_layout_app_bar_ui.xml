@@ -4,7 +4,8 @@
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="0.0dp"
-    android:layout_weight="1">
+    android:layout_weight="1"
+    app:roundedCorners="bottom_left|bottom_right">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"

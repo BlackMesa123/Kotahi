@@ -14,15 +14,19 @@
 package io.mesalabs.oneui.support.activity;
 
 import android.view.LayoutInflater;
+import android.view.SemView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.util.SeslRoundedCorner;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import dev.rikka.tools.refine.Refine;
 import io.mesalabs.oneui.R;
 import io.mesalabs.oneui.databinding.OuiLayoutAppBarUiBinding;
 import io.mesalabs.oneui.support.utils.BuildUtils;
@@ -87,5 +91,31 @@ public class AppBarActivity extends AbsAppBarActivity {
     @Override
     public ViewGroup getFooterContainer() {
         return mFooterContainer;
+    }
+
+    /*
+     * Footer methods.
+     */
+    public void addFooterView(@NonNull View view) {
+        super.addFooterView(view);
+        if (BuildUtils.isOneUI()) {
+            Refine.<SemView>unsafeCast(
+                    getWindow().getDecorView()).semSetRoundedCorners(0);
+            mAppBarContent.getRoot().setRoundedCorners(
+                    SeslRoundedCorner.ROUNDED_CORNER_BOTTOM_LEFT
+                            | SeslRoundedCorner.ROUNDED_CORNER_BOTTOM_RIGHT);
+        }
+    }
+
+    public void addFooterView(@NonNull View view,
+                              @NonNull ViewGroup.LayoutParams params) {
+        super.addFooterView(view, params);
+        if (BuildUtils.isOneUI()) {
+            Refine.<SemView>unsafeCast(
+                    getWindow().getDecorView()).semSetRoundedCorners(0);
+            mAppBarContent.getRoot().setRoundedCorners(
+                    SeslRoundedCorner.ROUNDED_CORNER_BOTTOM_LEFT
+                            | SeslRoundedCorner.ROUNDED_CORNER_BOTTOM_RIGHT);
+        }
     }
 }
