@@ -25,9 +25,9 @@ configurations.all {
 
 dependencies {
     // Sesl
-    implementation 'io.github.oneuiproject.sesl:appcompat:1.2.1'
+    implementation 'io.github.oneuiproject.sesl:appcompat:1.2.2'
     implementation 'io.github.oneuiproject.sesl:coordinatorlayout:1.0.0'
-    implementation("io.github.oneuiproject.sesl:material:1.2.0") {
+    implementation("io.github.oneuiproject.sesl:material:1.2.1") {
         exclude group: 'io.github.oneuiproject.sesl', module: 'viewpager2'
     }
     // AndroidX
