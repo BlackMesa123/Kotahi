@@ -31,6 +31,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 
@@ -58,6 +59,8 @@ abstract class AbsAppBarActivity extends BaseActivity {
 
     abstract void onLayoutCreate();
 
+    @NonNull
+    public abstract CoordinatorLayout getCoordinatorLayout();
     @NonNull
     public abstract AppBarLayout getAppBarLayout();
     @NonNull
@@ -266,6 +269,22 @@ abstract class AbsAppBarActivity extends BaseActivity {
 
     public void setAppBarCustomSubtitle(@NonNull View view) {
         getCollapsingToolbarLayout().seslSetCustomSubtitle(view);
+    }
+
+    /*
+     * CoordinatorLayout methods.
+     */
+    public void addViewInRoot(@NonNull View view) {
+        addViewInRoot(view, null);
+    }
+
+    public void addViewInRoot(@NonNull View view,
+                              @Nullable CoordinatorLayout.LayoutParams params) {
+        if (params == null) {
+            params = new CoordinatorLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        getCoordinatorLayout().addView(view, params);
     }
 
     /*

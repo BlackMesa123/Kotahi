@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.util.SeslRoundedCorner;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -47,7 +48,7 @@ public class AppBarActivity extends AbsAppBarActivity {
                 ViewGroup.LayoutParams.MATCH_PARENT, 0);
         appBarLp.weight = 1.0f;
         if (BuildUtils.isOneUI()) {
-            mAppBarContent.getRoot().setRoundedCorners(0);
+            mAppBarContent.coordinatorLayout.setRoundedCorners(0);
         }
         rootView.addView(mAppBarContent.getRoot(), appBarLp);
 
@@ -59,6 +60,12 @@ public class AppBarActivity extends AbsAppBarActivity {
         rootView.addView(mFooterContainer, footerLp);
 
         setRootView(rootView);
+    }
+
+    @NonNull
+    @Override
+    public CoordinatorLayout getCoordinatorLayout() {
+        return mAppBarContent.coordinatorLayout;
     }
 
     @NonNull

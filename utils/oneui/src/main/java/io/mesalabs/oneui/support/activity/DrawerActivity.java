@@ -36,12 +36,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import dev.rikka.tools.refine.Refine;
+
 import io.mesalabs.oneui.R;
 import io.mesalabs.oneui.databinding.OuiLayoutDrawerUiBinding;
 import io.mesalabs.oneui.support.utils.BuildUtils;
@@ -54,9 +56,12 @@ public class DrawerActivity extends AbsAppBarActivity {
     private static final float DRAWER_CORNER_RADIUS = 15.f;
     // Flags
     private boolean mIsRtl = false;
+    private boolean mIsDrawerOpened = false;
     // Views
     private OuiLayoutDrawerUiBinding mBinding;
     private Toolbar mToolbar;
+    // Callbacks
+    private final DrawerListener mDrawerListener = new DrawerListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +82,16 @@ public class DrawerActivity extends AbsAppBarActivity {
         super.onConfigurationChanged(newConfig);
         mIsRtl = newConfig.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
         setDrawerWidth();
-        openDrawer(false, false);
+        if (mIsDrawerOpened) {
+            mBinding.drawerLayout.post(() -> mDrawerListener.onDrawerSlide(
+                            mBinding.drawerContentContainer, 1.f));
+        }
     }
 
     private void initDrawer() {
         if (BuildUtils.isOneUI()) {
-            Refine.<SemView>unsafeCast(
-                    getWindow().getDecorView()).semSetRoundedCorners(0);
+            Refine.<SemView>unsafeCast(getWindow().getDecorView())
+                    .semSetRoundedCorners(SemView.SEM_ROUNDED_CORNER_NONE);
         }
 
         super.setNavigationButtonIcon(mContext.getDrawable(R.drawable.tw_ic_ab_drawer_mtrl));
@@ -93,33 +101,17 @@ public class DrawerActivity extends AbsAppBarActivity {
 
         mBinding.drawerLayout.setScrimColor(mContext.getColor(
                 R.color.oui_drawerlayout_drawer_dim_color));
-        mBinding.drawerLayout.setDrawerElevation(0.0f);
-        mBinding.drawerLayout.addDrawerListener(
-                new DrawerLayout.SimpleDrawerListener() {
-                    @Override
-                    public void onDrawerSlide(View drawerView, float slideOffset) {
-                        super.onDrawerSlide(drawerView, slideOffset);
-
-                        Window window = getWindow();
-
-                        float slideX = drawerView.getWidth() * slideOffset;
-                        if (mIsRtl)
-                            slideX *= -1;
-                        mBinding.appBarContainer.setTranslationX(slideX);
-
-                        final float[] hsv = new float[3];
-                        Color.colorToHSV(mContext.getColor(
-                                R.color.samsung_bg_color), hsv);
-                        hsv[2] *= 1f - (slideOffset * 0.2f);
-
-                        final int systemBarsColor = Color.HSVToColor(hsv);
-                        window.setStatusBarColor(systemBarsColor);
-                        window.setNavigationBarColor(systemBarsColor);
-                    }
-                });
+        mBinding.drawerLayout.setDrawerElevation(0.f);
+        mBinding.drawerLayout.addDrawerListener(mDrawerListener);
 
         setDrawerWidth();
         setDrawerCornerRadius(DRAWER_CORNER_RADIUS);
+    }
+
+    @NonNull
+    @Override
+    public CoordinatorLayout getCoordinatorLayout() {
+        return mBinding.appBarContent.coordinatorLayout;
     }
 
     @NonNull
@@ -187,8 +179,6 @@ public class DrawerActivity extends AbsAppBarActivity {
      * Drawer methods.
      */
     private void setDrawerWidth() {
-        ViewGroup.LayoutParams lp = mBinding.drawerContentContainer.getLayoutParams();
-
         WindowManager wm = (WindowManager) mContext
                 .getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -196,24 +186,25 @@ public class DrawerActivity extends AbsAppBarActivity {
         Point size = new Point();
         display.getSize(size);
 
-        final int displayWidth = size.x;
+        final int displayWidthPixel = size.x;
         final float density = getResources().getDisplayMetrics().density;
-        final float dpi = (float) displayWidth / density;
+        final float displayWidthDp = (float) displayWidthPixel / density;
 
-        double widthRate;
-        if (dpi >= 1920.0F) {
-            widthRate = 0.22D;
-        } else if (dpi >= 960.0F && dpi < 1920.0F) {
-            widthRate = 0.2734D;
-        } else if (dpi >= 600.0F && dpi < 960.0F) {
-            widthRate = 0.46D;
-        } else if (dpi >= 480.0F && dpi < 600.0F) {
-            widthRate = 0.5983D;
+        final double widthRate;
+        if (displayWidthDp >= 1920.f) {
+            widthRate = 0.22d;
+        } else if (displayWidthDp >= 960.f) {
+            widthRate = 0.2734d;
+        } else if (displayWidthDp >= 600.f) {
+            widthRate = 0.46d;
+        } else if (displayWidthDp >= 480.f) {
+            widthRate = 0.5983d;
         } else {
-            widthRate = 0.844D;
+            widthRate = 0.844d;
         }
 
-        lp.width = (int) ((double) displayWidth * widthRate);
+        ViewGroup.LayoutParams lp = mBinding.drawerContentContainer.getLayoutParams();
+        lp.width = (int) ((double) displayWidthPixel * widthRate);
     }
 
     private void setDrawerCornerRadius(@Dimension float dp) {
@@ -256,6 +247,42 @@ public class DrawerActivity extends AbsAppBarActivity {
                             ? view.getWidth() + mCornerRadius
                             : view.getWidth(), view.getHeight(),
                     mCornerRadius);
+        }
+    }
+
+    private class DrawerListener extends DrawerLayout.SimpleDrawerListener {
+        @Override
+        public void onDrawerSlide(View drawerView, float slideOffset) {
+            super.onDrawerSlide(drawerView, slideOffset);
+
+            float slideX = drawerView.getWidth() * slideOffset;
+            if (mIsRtl)
+                slideX *= -1;
+            mBinding.appBarContainer.setTranslationX(slideX);
+
+
+            Window window = getWindow();
+
+            final float[] hsv = new float[3];
+            Color.colorToHSV(mContext.getColor(
+                    R.color.samsung_bg_color), hsv);
+            hsv[2] *= 1.0f - (slideOffset * 0.2f);
+
+            final int systemBarsColor = Color.HSVToColor(hsv);
+            window.setStatusBarColor(systemBarsColor);
+            window.setNavigationBarColor(systemBarsColor);
+        }
+
+        @Override
+        public void onDrawerOpened(View drawerView) {
+            super.onDrawerOpened(drawerView);
+            mIsDrawerOpened = true;
+        }
+
+        @Override
+        public void onDrawerClosed(View drawerView) {
+            super.onDrawerClosed(drawerView);
+            mIsDrawerOpened = false;
         }
     }
 }
