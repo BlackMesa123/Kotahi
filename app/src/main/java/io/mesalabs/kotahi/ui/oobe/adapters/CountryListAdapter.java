@@ -215,6 +215,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
             itemView.setText(getCountryName(c));
             itemView.setChecked(c.equals(mSelectedCountry));
             itemView.setOnClickListener(v -> setCheckedItem(holder.getBindingAdapterPosition()));
+            itemView.jumpDrawablesToCurrentState();
         } else {
             AppCompatTextView itemView = (AppCompatTextView) holder.itemView;
             // TODO add localized string
