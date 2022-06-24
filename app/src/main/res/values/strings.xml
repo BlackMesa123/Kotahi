@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Kotahi</string>
+
+    <string name="oobe_confirm_back">Press again to exit.</string>
+    <string name="oobe_next">Next</string>
+    <string name="oobe_continue">Continue</string>
+    <string name="oobe_cancel">Cancel</string>
+
+    <string name="oobe_intro_tos">Terms of Service</string>
+    <string name="oobe_intro_tos_desc">By clicking Continue, you agree to the %s.</string>
+
+    <string name="oobe_intro_tip_title_1">!Early build</string>
+    <string name="oobe_intro_tip_title_2">Beautiful</string>
+    <string name="oobe_intro_tip_title_3">Powerful</string>
+    <string name="oobe_intro_tip_summary_1">This app is currently in W.I.P. and not stable!</string>
+    <string name="oobe_intro_tip_summary_2">The world\'s fastest messaging app, now with a revamped user interface.</string>
+    <string name="oobe_intro_tip_summary_3">Kotahi uses the Telegram\'s API to provide free unlimited cloud storage for chats and media.</string>
+
+    <string name="oobe_config_confirm_number">Confirm number</string>
+    <string name="oobe_config_pick_from_gms">Pick from GMS</string>
+    <string name="oobe_config_info">Please insert your phone number.</string>
+    <string name="oobe_config_continue_with">Continue with</string>
+    <string name="oobe_config_sync_contacts">Sync Contacts</string>
 </resources>

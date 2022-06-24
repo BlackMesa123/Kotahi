@@ -15,7 +15,7 @@
             style="@style/Widget.Kotahi.OOBE.TextView.Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please insert your phone number."
+            android:text="@string/oobe_config_info"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +72,7 @@
             style="?android:attr/listSeparatorTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Continue with" />
+            android:text="@string/oobe_config_continue_with" />
 
         <io.mesalabs.oneui.support.widget.RoundedLinearLayout
             android:layout_width="match_parent"
@@ -93,7 +93,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
             android:checked="true"
-            android:text="Sync Contacts" />
+            android:text="@string/oobe_config_sync_contacts" />
 
     </LinearLayout>
 
@@ -104,7 +104,7 @@
         android:paddingVertical="16.0dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/oobe_intro_sub_button"
+            android:id="@+id/oobe_config_sub_button"
             style="@style/Widget.Kotahi.OOBE.SubButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

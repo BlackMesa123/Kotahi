@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="oobe_intro_tips_titles">
+        <item>@string/oobe_intro_tip_title_1</item>
+        <item>@string/oobe_intro_tip_title_2</item>
+        <item>@string/oobe_intro_tip_title_3</item>
+    </string-array>
+
+    <string-array name="oobe_intro_tips_summaries">
+        <item>@string/oobe_intro_tip_summary_1</item>
+        <item>@string/oobe_intro_tip_summary_2</item>
+        <item>@string/oobe_intro_tip_summary_3</item>
+    </string-array>
+</resources>

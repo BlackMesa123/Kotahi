@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/oobe_code_confirm_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textSize="20sp" />
+        <!--todo android:maxLength="5"-->
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/oobe_intro_sub_footer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16.0dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/oobe_code_confirm_sub_button"
+            style="@style/Widget.Kotahi.OOBE.SubButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10.0dp" />
+
+    </FrameLayout>
+
+</LinearLayout>

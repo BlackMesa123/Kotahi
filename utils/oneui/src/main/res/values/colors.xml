@@ -16,4 +16,8 @@
     <!-- DrawerActivity -->
     <color name="oui_drawerlayout_drawer_dim_color">#33000000</color>
 
+    <!-- ProgressDialog -->
+    <color name="oui_progress_dialog_text_color">#ff252525</color>
+    <color name="oui_progress_dialog_horizontal_text_color">#ff505050</color>
+
 </resources>

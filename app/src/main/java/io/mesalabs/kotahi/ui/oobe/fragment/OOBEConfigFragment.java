@@ -14,12 +14,15 @@
 package io.mesalabs.kotahi.ui.oobe.fragment;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
@@ -42,6 +45,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,15 +55,21 @@ import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.transition.MaterialSharedAxis;
+import com.samsung.android.view.animation.SineIn50;
 import com.samsung.android.view.animation.SineInOut80;
+
+import org.drinkless.tdlib.Client;
+import org.drinkless.tdlib.TdApi;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.mesalabs.kotahi.KotahiApp;
 import io.mesalabs.kotahi.R;
 import io.mesalabs.kotahi.databinding.FragmentOobeConfigBinding;
+import io.mesalabs.oneui.support.widget.ProgressDialog;
 
-public class OOBEConfigFragment extends Fragment {
+public class OOBEConfigFragment extends Fragment implements Client.ResultHandler {
     private static final int REQUEST_PHONE_PERMISSION = 1011;
 
     private Context mContext;
@@ -66,6 +77,7 @@ public class OOBEConfigFragment extends Fragment {
 
     private ActivityResultLauncher<IntentSenderRequest> numberPickerResultLauncher;
     private IntentSenderRequest numberPickerSenderRequest;
+    private ProgressDialog progressDialog;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -87,7 +99,6 @@ public class OOBEConfigFragment extends Fragment {
         exitTransition.setDuration(600);
         setReturnTransition(exitTransition);
 
-        //setHasOptionsMenu(true);
     }
 
     @Override
@@ -99,6 +110,16 @@ public class OOBEConfigFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ColorDrawable c = new ColorDrawable(mContext.getColor(io.mesalabs.oneui.R.color.samsung_bg_color));
+        view.setForeground(c);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(c, PropertyValuesHolder.ofInt("alpha", 255, 0));
+        animator.setTarget(c);
+        animator.setStartDelay(300);
+        animator.setDuration(300);
+        animator.setInterpolator(new SineIn50());
+        animator.start();
+
         init();
     }
 
@@ -108,14 +129,11 @@ public class OOBEConfigFragment extends Fragment {
         mBinding = null;
     }
 
-    /*@Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-        MenuCompat.setGroupDividerEnabled(menu, true);
-        super.onCreateOptionsMenu(menu, inflater);
-    }*/
-
     private void init() {
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_CIRCLE);
+        progressDialog.setCancelable(false);
+
         mBinding.oobeConfigCountrySpinner.setOnItemSelectedListener(
                 (countryCode, phoneNumberFormat) -> {
                     boolean hasFocus = mBinding.oobeConfigCountryCode.hasFocus();
@@ -150,10 +168,9 @@ public class OOBEConfigFragment extends Fragment {
         TelephonyManager tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         mBinding.oobeConfigCountrySpinner.setCountryFromISO(tm.getSimCountryIso());
 
-        // TODO add localized string
-        mBinding.oobeIntroSubButton.setText("Next");
-        mBinding.oobeIntroSubButton.seslSetButtonShapeEnabled(true);
-        mBinding.oobeIntroSubButton.setOnClickListener(v -> {
+        mBinding.oobeConfigSubButton.setText(R.string.oobe_next);
+        mBinding.oobeConfigSubButton.seslSetButtonShapeEnabled(true);
+        mBinding.oobeConfigSubButton.setOnClickListener(v -> {
             confirmNumberDialog("+" + mBinding.oobeConfigCountryCode.getText() + mBinding.oobeConfigPhoneNumber.getText());
         });
 
@@ -163,15 +180,45 @@ public class OOBEConfigFragment extends Fragment {
 
     private void confirmNumberDialog(String number) {
         AlertDialog confirmDialog = new AlertDialog.Builder(mContext)
-                .setTitle("Confirm number")
+                .setTitle(R.string.oobe_config_confirm_number)
                 .setMessage(number)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Next", (dialog, which) -> {
-                    // TODO go to the code confirmation page
-                    Toast.makeText(mContext, number, Toast.LENGTH_SHORT).show();
+                .setNegativeButton(R.string.oobe_cancel, null)
+                .setPositiveButton(R.string.oobe_next, (dialog, which) -> {
+                    progressDialog.show();
+                    KotahiApp.authenticate(number, this);
                 })
                 .create();
         confirmDialog.show();
+    }
+
+    @Override
+    public void onResult(TdApi.Object object) {
+        progressDialog.dismiss();
+        Log.e("Auth", object.toString());
+        switch (object.getConstructor()) {
+            case TdApi.Error.CONSTRUCTOR:
+                // TODO
+                Toast.makeText(mContext, "Auth error", Toast.LENGTH_SHORT).show();
+
+                //  Error {
+                //      code = 400
+                //      message = "PHONE_NUMBER_INVALID"
+                //  }
+
+                break;
+            case TdApi.Ok.CONSTRUCTOR:
+                // confirm code
+                // TODO attach object
+                mBinding.getRoot().post(this::navigateToNextFragment);
+
+                break;
+        }
+
+    }
+
+    private void navigateToNextFragment() {
+        NavController controller = NavHostFragment.findNavController(OOBEConfigFragment.this);
+        controller.navigate(R.id.action_nav_to_obCodeConfirmFragment);
     }
 
     private void initNumberListView() {
@@ -207,13 +254,12 @@ public class OOBEConfigFragment extends Fragment {
             }
         }
 
-        numbers.add("Pick from GMS");
+        numbers.add(getString(R.string.oobe_config_pick_from_gms));
         mBinding.oobeConfigNumberList.setAdapter(new NumberAdapter(numbers));
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.e("request", "response");
         if (requestCode == REQUEST_PHONE_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)
             listPhoneNumbers();
     }

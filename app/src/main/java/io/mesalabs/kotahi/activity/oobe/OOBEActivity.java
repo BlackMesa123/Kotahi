@@ -30,9 +30,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import dev.rikka.tools.refine.Refine;
-
 import com.samsung.android.view.animation.SineInOut80;
+
+import dev.rikka.tools.refine.Refine;
 import io.mesalabs.kotahi.R;
 import io.mesalabs.kotahi.databinding.ActivityOobeBinding;
 import io.mesalabs.oneui.support.utils.BuildUtils;
@@ -62,8 +62,7 @@ public class OOBEActivity extends AppCompatActivity
         mBinding = ActivityOobeBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
 
-        // TODO add localized string
-        mToast = Toast.makeText(this, "CONFIRM", Toast.LENGTH_SHORT);
+        mToast = Toast.makeText(this, R.string.oobe_confirm_back, Toast.LENGTH_SHORT);
 
         initAppBar();
         initNavHostFragment();
@@ -129,7 +128,7 @@ public class OOBEActivity extends AppCompatActivity
         if (mNavController != null && mAppBarConfiguration != null) {
             return NavigationUI.navigateUp(
                     mNavController, mAppBarConfiguration)
-                        || super.onSupportNavigateUp();
+                    || super.onSupportNavigateUp();
         }
         return false;
     }

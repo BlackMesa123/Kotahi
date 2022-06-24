@@ -36,7 +36,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.transition.MaterialSharedAxis;
-
 import com.samsung.android.view.animation.SineInOut80;
 
 import io.mesalabs.kotahi.R;
@@ -113,22 +112,11 @@ public class OOBEIntroFragment extends Fragment {
         mBinding = null;
     }
 
-    // FIXME
     private void initTipsItems() {
-        LinearLayout.LayoutParams defaultLp = new LinearLayout
-                .LayoutParams(MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams defaultLp = new LinearLayout.LayoutParams(MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
-        String[] titles = {
-                "!Early build",
-                "Beautiful",
-                "Powerful"
-        };
-
-        String[] summaries = {
-                "This app is currently in W.I.P. and not stable!",
-                "The world's fastest messaging app, now with a revamped user interface.",
-                "Kotahi uses the Telegram's API to provide free unlimited cloud storage for chats and media."
-        };
+        String[] titles = getResources().getStringArray(R.array.oobe_intro_tips_titles);
+        String[] summaries = getResources().getStringArray(R.array.oobe_intro_tips_summaries);
 
         for (int i = 0; i < titles.length; i++) {
             String title = titles[i];
@@ -145,11 +133,9 @@ public class OOBEIntroFragment extends Fragment {
         }
     }
 
-    // FIXME
     private void initToSView() {
-        // TODO add localized string
-        String tos = "Terms of Service";
-        String tosText = "By clicking Continue, you agree to the " + tos + ".";
+        String tos = getString(R.string.oobe_intro_tos);
+        String tosText = getString(R.string.oobe_intro_tos_desc, tos);
 
         SpannableString tosLink = new SpannableString(tosText);
         tosLink.setSpan(new ToSSpanText(), tosText.indexOf(tos), tosText.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -159,14 +145,12 @@ public class OOBEIntroFragment extends Fragment {
         mBinding.oobeIntroFooterTosText.setHighlightColor(Color.TRANSPARENT);
     }
 
-    // FIXME
     private void initFooterButton() {
         if (getResources().getConfiguration().screenWidthDp < 360) {
             mBinding.oobeIntroFooterButton.getLayoutParams().width = MATCH_PARENT;
         }
 
-        // TODO add localized string
-        mBinding.oobeIntroFooterButton.setText("Continue");
+        mBinding.oobeIntroFooterButton.setText(R.string.oobe_continue);
         mBinding.oobeIntroFooterButton.setTypeface(TypefaceUtils.getBoldSupportTypeface());
         mBinding.oobeIntroFooterButton.setOnClickListener(v -> {
             mBinding.oobeIntroFooterTosText.setEnabled(false);

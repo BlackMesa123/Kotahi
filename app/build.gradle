@@ -8,6 +8,10 @@ def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 1
 
+
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("tdapi.properties")))
+
 android {
     namespace 'io.mesalabs.kotahi'
     compileSdk 32
@@ -19,6 +23,9 @@ android {
         targetSdk 32
         versionCode versionMajor * 100000 + versionMinor * 1000 + versionPatch
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        buildConfigField("Integer", "TD_API_ID", localProperties['API_ID'])
+        buildConfigField("String", "TD_API_HASH", localProperties['API_HASH'])
     }
 
     lintOptions {
