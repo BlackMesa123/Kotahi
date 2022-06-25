@@ -130,7 +130,7 @@ public class OOBECodeConfirmFragment extends Fragment implements Client.ResultHa
             case TdApi.Ok.CONSTRUCTOR:
                 // TODO
 
-                KotahiApp.registerUser(new Client.ResultHandler() {
+                KotahiApp.registerUser("first", "last", new Client.ResultHandler() {
                     @Override
                     public void onResult(TdApi.Object object) {
                         Log.e("User", object.toString());
