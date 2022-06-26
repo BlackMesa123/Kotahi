@@ -40,6 +40,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import io.mesalabs.oneui.R;
 import io.mesalabs.oneui.support.base.BaseActivity;
+import io.mesalabs.oneui.support.utils.BuildUtils;
 
 /**
  * Part of the code has been kanged from:
@@ -83,6 +84,10 @@ abstract class AbsAppBarActivity extends BaseActivity {
 
     private void initToolbar() {
         Toolbar toolbar = getToolbar();
+        if (!BuildUtils.isSemDevice()) {
+            toolbar.setTitleTextAppearance(
+                    mContext, R.style.TextAppearance_Kotahi_SeslToolbar_Title);
+        }
 
         CollapsingToolbarLayout.LayoutParams lp = new CollapsingToolbarLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
