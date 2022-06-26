@@ -57,9 +57,12 @@ public class TdApi {
             AnswerPreCheckoutQuery.CONSTRUCTOR,
             AnswerShippingQuery.CONSTRUCTOR,
             AnswerWebAppQuery.CONSTRUCTOR,
+            AssignAppStoreTransaction.CONSTRUCTOR,
+            AssignGooglePlayTransaction.CONSTRUCTOR,
             BanChatMember.CONSTRUCTOR,
             BlockMessageSenderFromReplies.CONSTRUCTOR,
             CanTransferOwnership.CONSTRUCTOR,
+            CanPurchasePremium.CONSTRUCTOR,
             CancelDownloadFile.CONSTRUCTOR,
             CancelPasswordReset.CONSTRUCTOR,
             CancelUploadFile.CONSTRUCTOR,
@@ -7389,7 +7392,7 @@ public class TdApi {
          */
         public String title;
         /**
-         * The chosen icon name for short filter representation. If non-empty, must be one of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;. If empty, use getChatFilterDefaultIconName to get default icon name for the filter.
+         * The chosen icon name for short filter representation. If non-empty, must be one of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;, &quot;Airplane&quot;, &quot;Book&quot;, &quot;Light&quot;, &quot;Like&quot;, &quot;Money&quot;, &quot;Note&quot;, &quot;Palette&quot;. If empty, use getChatFilterDefaultIconName to get default icon name for the filter.
          */
         public String iconName;
         /**
@@ -7447,7 +7450,7 @@ public class TdApi {
          * Represents a filter of user chats.
          *
          * @param title The title of the filter; 1-12 characters without line feeds.
-         * @param iconName The chosen icon name for short filter representation. If non-empty, must be one of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;. If empty, use getChatFilterDefaultIconName to get default icon name for the filter.
+         * @param iconName The chosen icon name for short filter representation. If non-empty, must be one of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;, &quot;Airplane&quot;, &quot;Book&quot;, &quot;Light&quot;, &quot;Like&quot;, &quot;Money&quot;, &quot;Note&quot;, &quot;Palette&quot;. If empty, use getChatFilterDefaultIconName to get default icon name for the filter.
          * @param pinnedChatIds The chat identifiers of pinned chats in the filtered chat list. There can be up to GetOption(&quot;chat_filter_chosen_chat_count_max&quot;) pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
          * @param includedChatIds The chat identifiers of always included chats in the filtered chat list. There can be up to GetOption(&quot;chat_filter_chosen_chat_count_max&quot;) pinned and always included non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
          * @param excludedChatIds The chat identifiers of always excluded chats in the filtered chat list. There can be up to GetOption(&quot;chat_filter_chosen_chat_count_max&quot;) always excluded non-secret chats and the same number of secret chats, but the limit can be increased with Telegram Premium.
@@ -7503,7 +7506,7 @@ public class TdApi {
          */
         public String title;
         /**
-         * The chosen or default icon name for short filter representation. One of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;.
+         * The chosen or default icon name for short filter representation. One of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;, &quot;Airplane&quot;, &quot;Book&quot;, &quot;Light&quot;, &quot;Like&quot;, &quot;Money&quot;, &quot;Note&quot;, &quot;Palette&quot;.
          */
         public String iconName;
 
@@ -7518,7 +7521,7 @@ public class TdApi {
          *
          * @param id Unique chat filter identifier.
          * @param title The title of the filter; 1-12 characters without line feeds.
-         * @param iconName The chosen or default icon name for short filter representation. One of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;.
+         * @param iconName The chosen or default icon name for short filter representation. One of &quot;All&quot;, &quot;Unread&quot;, &quot;Unmuted&quot;, &quot;Bots&quot;, &quot;Channels&quot;, &quot;Groups&quot;, &quot;Private&quot;, &quot;Custom&quot;, &quot;Setup&quot;, &quot;Cat&quot;, &quot;Crown&quot;, &quot;Favorite&quot;, &quot;Flower&quot;, &quot;Game&quot;, &quot;Home&quot;, &quot;Love&quot;, &quot;Mask&quot;, &quot;Party&quot;, &quot;Sport&quot;, &quot;Study&quot;, &quot;Trade&quot;, &quot;Travel&quot;, &quot;Work&quot;, &quot;Airplane&quot;, &quot;Book&quot;, &quot;Light&quot;, &quot;Like&quot;, &quot;Money&quot;, &quot;Note&quot;, &quot;Palette&quot;.
          */
         public ChatFilterInfo(int id, String title, String iconName) {
             this.id = id;
@@ -49590,6 +49593,100 @@ public class TdApi {
     }
 
     /**
+     * Informs server about a Telegram Premium purchase through App Store. For official applications only.
+     *
+     * <p> Returns {@link Ok Ok} </p>
+     */
+    public static class AssignAppStoreTransaction extends Function<Ok> {
+        /**
+         * App Store receipt.
+         */
+        public byte[] receipt;
+        /**
+         * True, if this is restore of Premium purchase.
+         */
+        public boolean isRestore;
+
+        /**
+         * Default constructor for a function, which informs server about a Telegram Premium purchase through App Store. For official applications only.
+         *
+         * <p> Returns {@link Ok Ok} </p>
+         */
+        public AssignAppStoreTransaction() {
+        }
+
+        /**
+         * Creates a function, which informs server about a Telegram Premium purchase through App Store. For official applications only.
+         *
+         * <p> Returns {@link Ok Ok} </p>
+         *
+         * @param receipt App Store receipt.
+         * @param isRestore True, if this is restore of Premium purchase.
+         */
+        public AssignAppStoreTransaction(byte[] receipt, boolean isRestore) {
+            this.receipt = receipt;
+            this.isRestore = isRestore;
+        }
+
+        /**
+         * Identifier uniquely determining type of the object.
+         */
+        public static final int CONSTRUCTOR = -1460996225;
+
+        /**
+         * @return this.CONSTRUCTOR
+         */
+        @Override
+        public int getConstructor() {
+            return CONSTRUCTOR;
+        }
+    }
+
+    /**
+     * Informs server about a Telegram Premium purchase through Google Play. For official applications only.
+     *
+     * <p> Returns {@link Ok Ok} </p>
+     */
+    public static class AssignGooglePlayTransaction extends Function<Ok> {
+        /**
+         * Google Play purchase token.
+         */
+        public String purchaseToken;
+
+        /**
+         * Default constructor for a function, which informs server about a Telegram Premium purchase through Google Play. For official applications only.
+         *
+         * <p> Returns {@link Ok Ok} </p>
+         */
+        public AssignGooglePlayTransaction() {
+        }
+
+        /**
+         * Creates a function, which informs server about a Telegram Premium purchase through Google Play. For official applications only.
+         *
+         * <p> Returns {@link Ok Ok} </p>
+         *
+         * @param purchaseToken Google Play purchase token.
+         */
+        public AssignGooglePlayTransaction(String purchaseToken) {
+            this.purchaseToken = purchaseToken;
+        }
+
+        /**
+         * Identifier uniquely determining type of the object.
+         */
+        public static final int CONSTRUCTOR = 1375483965;
+
+        /**
+         * @return this.CONSTRUCTOR
+         */
+        @Override
+        public int getConstructor() {
+            return CONSTRUCTOR;
+        }
+    }
+
+    /**
      * Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
      *
      * <p> Returns {@link Ok Ok} </p>
@@ -49703,6 +49800,35 @@ public class TdApi {
          * Identifier uniquely determining type of the object.
          */
         public static final int CONSTRUCTOR = -1214384757;
+
+        /**
+         * @return this.CONSTRUCTOR
+         */
+        @Override
+        public int getConstructor() {
+            return CONSTRUCTOR;
+        }
+    }
+
+    /**
+     * Checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase.
+     *
+     * <p> Returns {@link Ok Ok} </p>
+     */
+    public static class CanPurchasePremium extends Function<Ok> {
+
+        /**
+         * Default constructor for a function, which checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase.
+         *
+         * <p> Returns {@link Ok Ok} </p>
+         */
+        public CanPurchasePremium() {
+        }
+
+        /**
+         * Identifier uniquely determining type of the object.
+         */
+        public static final int CONSTRUCTOR = 1049427073;
 
         /**
          * @return this.CONSTRUCTOR
