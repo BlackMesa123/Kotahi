@@ -24,6 +24,7 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -187,6 +188,7 @@ public class OOBEIntroFragment extends Fragment {
 
         @Override
         public void onClick(View widget) {
+            widget.playSoundEffect(SoundEffectConstants.CLICK);
             WebUtils.openWebPage(mContext, TOS_LINK);
         }
 
