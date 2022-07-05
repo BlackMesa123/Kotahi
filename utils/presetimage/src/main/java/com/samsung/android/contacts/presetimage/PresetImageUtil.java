@@ -78,55 +78,53 @@ public class PresetImageUtil {
             R.drawable.contact_list_preset_crop_35
     };
 
-    private static int getPresetImageIndex(long userId) {
-        if (userId < 0) {
+    private static int getPresetImageIndex(long identifier) {
+        if (identifier < 0) {
             return 0;
         }
 
-        return (int) (userId % CONTACT_LIST_PRESET_BACKGROUND.length);
+        final long imageIndex = identifier % CONTACT_LIST_PRESET_BACKGROUND.length;
+        return (int) imageIndex;
     }
 
-    private static int getPresetImageIndex(String userName) {
-        if (userName != null) {
-            final int abs = Math.abs(userName.hashCode());
+    private static int getPresetImageIndex(String displayName) {
+        if (displayName != null) {
+            final int identifier = Math.abs(displayName.hashCode());
 
-            if (abs >= 0) {
-                return abs % CONTACT_LIST_PRESET_BACKGROUND.length;
+            if (identifier >= 0) {
+                final long imageIndex = identifier % CONTACT_LIST_PRESET_BACKGROUND.length;
+                return (int) imageIndex;
             }
         }
 
         return 0;
     }
 
-    public static int getPresetImage(String userName) {
-        return CONTACT_LIST_PRESET_BACKGROUND[getPresetImageIndex(userName)];
+    public static int getPresetImage(String displayName) {
+        final int imageIndex = getPresetImageIndex(displayName);
+        return CONTACT_LIST_PRESET_BACKGROUND[imageIndex];
     }
 
-    public static int getCirclePresetImage(String userName) {
-        return CONTACT_LIST_PRESET_CIRCLE_BACKGROUND[getPresetImageIndex(userName)];
+    public static int getCirclePresetImage(String displayName) {
+        final int imageIndex = getPresetImageIndex(displayName);
+        return CONTACT_LIST_PRESET_CIRCLE_BACKGROUND[imageIndex];
     }
 
     public static int getPresetImage(long userId) {
-        return CONTACT_LIST_PRESET_BACKGROUND[getPresetImageIndex(userId)];
+        final int imageIndex = getPresetImageIndex(userId);
+        return CONTACT_LIST_PRESET_BACKGROUND[imageIndex];
     }
 
-    public static int getCirclePresetImage(long userId) {
-        return CONTACT_LIST_PRESET_CIRCLE_BACKGROUND[getPresetImageIndex(userId)];
+    public static int getCirclePresetImage(long identifier) {
+        final int imageIndex = getPresetImageIndex(identifier);
+        return CONTACT_LIST_PRESET_CIRCLE_BACKGROUND[imageIndex];
     }
 
-    public static int getCirclePresetImage(long userId, String userName) {
-        if (userId > 0) {
-            return getCirclePresetImage(userId);
-        } else {
-            return getCirclePresetImage(userName);
-        }
+    public static int getCirclePresetImage(long contactID, String displayName) {
+        return contactID > 0 ? getCirclePresetImage(contactID) : getCirclePresetImage(displayName);
     }
 
-    public static int getPresetImage(long userId, String userName) {
-        if (userId > 0) {
-            return getPresetImage(userId);
-        } else {
-            return getPresetImage(userName);
-        }
+    public static int getPresetImage(long contactID, String displayName) {
+        return contactID > 0 ? getPresetImage(contactID) : getPresetImage(displayName);
     }
 }
