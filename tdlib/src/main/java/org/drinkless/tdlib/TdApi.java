@@ -19582,6 +19582,10 @@ public class TdApi {
          * The parameter to be passed to sendBotStartMessage.
          */
         public String startParameter;
+        /**
+         * True, if sendBotStartMessage must be called automatically without showing the START button.
+         */
+        public boolean autostart;
 
         /**
          * The link is a link to a chat with a Telegram bot. Call searchPublicChat with the given bot username, check that the user is a bot, show START button in the chat with the bot, and then call sendBotStartMessage with the given start parameter after the button is pressed.
@@ -19594,16 +19598,18 @@ public class TdApi {
          *
          * @param botUsername Username of the bot.
          * @param startParameter The parameter to be passed to sendBotStartMessage.
+         * @param autostart True, if sendBotStartMessage must be called automatically without showing the START button.
          */
-        public InternalLinkTypeBotStart(String botUsername, String startParameter) {
+        public InternalLinkTypeBotStart(String botUsername, String startParameter, boolean autostart) {
             this.botUsername = botUsername;
             this.startParameter = startParameter;
+            this.autostart = autostart;
         }
 
         /**
          * Identifier uniquely determining type of the object.
          */
-        public static final int CONSTRUCTOR = -1206724291;
+        public static final int CONSTRUCTOR = 1066950637;
 
         /**
          * @return this.CONSTRUCTOR
@@ -32183,7 +32189,7 @@ public class TdApi {
          */
         public PremiumLimit[] limits;
         /**
-         * An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available. If the link has type internalLinkTypeBotStart, then sendBotStartMessage must be called automatically.
+         * An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available.
          */
         @Nullable public InternalLinkType paymentLink;
 
@@ -32198,7 +32204,7 @@ public class TdApi {
          *
          * @param features The list of available features.
          * @param limits The list of limits, increased for Premium users.
-         * @param paymentLink An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available. If the link has type internalLinkTypeBotStart, then sendBotStartMessage must be called automatically.
+         * @param paymentLink An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available.
          */
         public PremiumFeatures(PremiumFeature[] features, PremiumLimit[] limits, InternalLinkType paymentLink) {
             this.features = features;
@@ -49603,7 +49609,7 @@ public class TdApi {
          */
         public byte[] receipt;
         /**
-         * True, if this is restore of Premium purchase.
+         * Pass true if this is a restore of a Telegram Premium purchase.
          */
         public boolean isRestore;
 
@@ -49621,7 +49627,7 @@ public class TdApi {
          * <p> Returns {@link Ok Ok} </p>
          *
          * @param receipt App Store receipt.
-         * @param isRestore True, if this is restore of Premium purchase.
+         * @param isRestore Pass true if this is a restore of a Telegram Premium purchase.
          */
         public AssignAppStoreTransaction(byte[] receipt, boolean isRestore) {
             this.receipt = receipt;
