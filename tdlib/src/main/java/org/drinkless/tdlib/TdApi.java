@@ -61,8 +61,8 @@ public class TdApi {
             AssignGooglePlayTransaction.CONSTRUCTOR,
             BanChatMember.CONSTRUCTOR,
             BlockMessageSenderFromReplies.CONSTRUCTOR,
-            CanTransferOwnership.CONSTRUCTOR,
             CanPurchasePremium.CONSTRUCTOR,
+            CanTransferOwnership.CONSTRUCTOR,
             CancelDownloadFile.CONSTRUCTOR,
             CancelPasswordReset.CONSTRUCTOR,
             CancelUploadFile.CONSTRUCTOR,
@@ -55321,7 +55321,7 @@ public class TdApi {
     }
 
     /**
-     * Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing eventId).
+     * Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing eventId).
      *
      * <p> Returns {@link ChatEvents ChatEvents} </p>
      */
@@ -55352,7 +55352,7 @@ public class TdApi {
         public long[] userIds;
 
         /**
-         * Default constructor for a function, which returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing eventId).
+         * Default constructor for a function, which returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing eventId).
          *
          * <p> Returns {@link ChatEvents ChatEvents} </p>
          */
@@ -55360,7 +55360,7 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing eventId).
+         * Creates a function, which returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing eventId).
          *
          * <p> Returns {@link ChatEvents ChatEvents} </p>
          *
@@ -59274,7 +59274,7 @@ public class TdApi {
     }
 
     /**
-     * Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization.
+     * Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options &quot;version&quot; and &quot;commit_hash&quot;.
      *
      * <p> Returns {@link OptionValue OptionValue} </p>
      */
@@ -59285,7 +59285,7 @@ public class TdApi {
         public String name;
 
         /**
-         * Default constructor for a function, which returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization.
+         * Default constructor for a function, which returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options &quot;version&quot; and &quot;commit_hash&quot;.
          *
          * <p> Returns {@link OptionValue OptionValue} </p>
          */
@@ -59293,7 +59293,7 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization.
+         * Creates a function, which returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options &quot;version&quot; and &quot;commit_hash&quot;.
          *
          * <p> Returns {@link OptionValue OptionValue} </p>
          *
@@ -65238,7 +65238,7 @@ public class TdApi {
     }
 
     /**
-     * Searches for call messages. Returns the results in reverse chronological order (i. e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
+     * Searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
      *
      * <p> Returns {@link Messages Messages} </p>
      */
@@ -65257,7 +65257,7 @@ public class TdApi {
         public boolean onlyMissed;
 
         /**
-         * Default constructor for a function, which searches for call messages. Returns the results in reverse chronological order (i. e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
+         * Default constructor for a function, which searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
          *
          * <p> Returns {@link Messages Messages} </p>
          */
@@ -65265,7 +65265,7 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which searches for call messages. Returns the results in reverse chronological order (i. e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
+         * Creates a function, which searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing messageId). For optimal performance, the number of returned messages is chosen by TDLib.
          *
          * <p> Returns {@link Messages Messages} </p>
          *

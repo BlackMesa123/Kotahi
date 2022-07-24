@@ -18,7 +18,7 @@ fi
 
 cd td
 
-sed -i -e '/21724/,+3d' ./td/telegram/Td.cpp
+sed -i -e '/21724/,+5d' ./td/telegram/Td.cpp
 
 mkdir -p build_native
 cd build_native
